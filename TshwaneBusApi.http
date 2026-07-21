@@ -1,0 +1,6 @@
+@TshwaneBusApi_HostAddress = http://localhost:5250
+
+GET {{TshwaneBusApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
