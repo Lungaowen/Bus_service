@@ -71,18 +71,7 @@ var app = builder.Build();
 using (var scope = app.Services.CreateScope())
 {
     var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
-    db.Database.ExecuteSqlRaw(@"
-        CREATE TABLE IF NOT EXISTS ""ComplaintRecords"" (
-            ""Id"" UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-            ""UserId"" UUID NOT NULL DEFAULT '00000000-0000-0000-0000-000000000000',
-            ""Subject"" VARCHAR(200) NOT NULL,
-            ""Description"" TEXT NOT NULL,
-            ""Status"" VARCHAR(50) NOT NULL DEFAULT 'Pending',
-            ""AdminResponse"" TEXT NULL,
-            ""DateSubmitted"" TIMESTAMP NOT NULL DEFAULT now()
-        );
-        CREATE INDEX IF NOT EXISTS ""IX_ComplaintRecords_UserId"" ON ""ComplaintRecords"" (""UserId"");
-    ");
+    db.Database.EnsureCreated();
 }
 
 if (app.Environment.IsDevelopment())
