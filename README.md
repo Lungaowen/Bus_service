@@ -45,10 +45,10 @@ dotnet run
 # Swagger UI → http://localhost:5000/swagger
 ```
 
-**With Docker:**
+**With Docker (from repo root):**
 ```bash
 docker build -t complaint-module .
-docker run -p 8080:8080 --env-file .env complaint-module
+docker run -p 8080:8080 --env-file ComplaintModule/.env complaint-module
 ```
 
 ---
